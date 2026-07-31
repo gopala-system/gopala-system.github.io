@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gopala Potato Wafer | Product Information</title>
+<style>
+  :root{
+    --gold:#d99a2b;
+    --gold-dark:#b9781a;
+    --cream:#fff8ec;
+    --green:#2f6d3c;
+    --ink:#2b2420;
+    --muted:#6b6055;
+    --card:#ffffff;
+    --shadow: 0 8px 24px rgba(90,60,10,0.10);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: linear-gradient(180deg,#fff8ec 0%, #fdeecb 100%);
+    color:var(--ink);
+    display:flex;
+    justify-content:center;
+  }
+  .wrap{
+    width:100%;
+    max-width:480px;
+    min-height:100vh;
+    background:var(--cream);
+    box-shadow: 0 0 40px rgba(0,0,0,0.08);
+  }
+  header{
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color:#fff;
+    padding:22px 20px 18px;
+    text-align:center;
+    position:relative;
+  }
+  header .logo{
+    width:110px;
+    height:auto;
+    display:block;
+    margin:0 auto 10px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+  }
+  header .brand{
+    font-size:14px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    opacity:0.9;
+    margin-bottom:4px;
+  }
+  header h1{
+    margin:0;
+    font-size:26px;
+    font-weight:700;
+  }
+  header .tagline{
+    margin-top:6px;
+    font-size:13px;
+    font-style:italic;
+    opacity:0.95;
+  }
+  .veg-badge{
+    position:absolute;
+    top:18px;
+    right:18px;
+    width:26px;
+    height:26px;
+    background:#fff;
+    border:2px solid var(--green);
+    border-radius:3px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .veg-badge span{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:var(--green);
+  }
+  .hero-img{
+    width:100%;
+    display:block;
+    max-height:340px;
+    object-fit:cover;
+    border-bottom:4px solid var(--gold-dark);
+  }
+  .content{
+    padding:18px 18px 40px;
+  }
+  .price-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:var(--card);
+    border-radius:14px;
+    padding:14px 16px;
+    box-shadow:var(--shadow);
+    margin-top:-38px;
+    position:relative;
+    z-index:2;
+    margin-bottom:18px;
+  }
+  .price-row .net{
+    font-size:13px;
+    color:var(--muted);
+  }
+  .price-row .mrp{
+    font-size:20px;
+    font-weight:700;
+    color:var(--gold-dark);
+  }
+  .desc{
+    font-size:15px;
+    line-height:1.6;
+    color:var(--ink);
+    margin-bottom:22px;
+  }
+  .accordion{
+    margin-bottom:14px;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    background:var(--card);
+  }
+  .accordion-header{
+    padding:15px 16px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    cursor:pointer;
+    font-weight:600;
+    font-size:15px;
+    color:var(--ink);
+    user-select:none;
+  }
+  .accordion-header .icon{
+    color:var(--gold-dark);
+    font-size:18px;
+    transition: transform 0.25s ease;
+  }
+  .accordion.open .icon{
+    transform: rotate(45deg);
+  }
+  .accordion-body{
+    max-height:0;
+    overflow:hidden;
+    transition: max-height 0.3s ease;
+    padding:0 16px;
+  }
+  .accordion.open .accordion-body{
+    padding-bottom:16px;
+  }
+  .accordion-body p, .accordion-body ul{
+    margin:0 0 8px;
+    font-size:14px;
+    line-height:1.6;
+    color:var(--muted);
+  }
+  .accordion-body ul{
+    padding-left:18px;
+  }
+  .info-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:10px 14px;
+    font-size:13.5px;
+  }
+  .info-grid .label{
+    color:var(--muted);
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+  }
+  .info-grid .value{
+    font-weight:600;
+    color:var(--ink);
+  }
+  .allergen-tag{
+    display:inline-block;
+    background:#fdf0d8;
+    border:1px solid var(--gold);
+    color:var(--gold-dark);
+    padding:4px 10px;
+    border-radius:20px;
+    font-size:12.5px;
+    font-weight:600;
+    margin-top:6px;
+  }
+  .fssai-badge{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#eef6ee;
+    border:1px solid #cfe6cf;
+    border-radius:12px;
+    padding:12px 14px;
+    margin-bottom:18px;
+  }
+  .fssai-badge .fssai-logo{
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    background:var(--green);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:11px;
+    font-weight:700;
+    text-align:center;
+    flex-shrink:0;
+  }
+  .fssai-badge .fssai-text{
+    font-size:12.5px;
+    color:var(--ink);
+    line-height:1.4;
+  }
+  .fssai-badge .fssai-text b{
+    display:block;
+    font-size:13.5px;
+  }
+  .contact-card{
+    background: var(--green);
+    color:#fff;
+    border-radius:14px;
+    padding:18px 16px;
+    text-align:center;
+    box-shadow:var(--shadow);
+    margin-top:6px;
+  }
+  .contact-card h3{
+    margin:0 0 10px;
+    font-size:15px;
+  }
+  .contact-card a{
+    color:#fff;
+    text-decoration:none;
+    display:block;
+    font-size:14.5px;
+    margin-bottom:6px;
+    font-weight:600;
+  }
+  .contact-card .addr{
+    font-size:12.5px;
+    opacity:0.9;
+    margin-top:8px;
+    line-height:1.5;
+  }
+  footer{
+    text-align:center;
+    padding:16px;
+    font-size:11px;
+    color:var(--muted);
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="veg-badge"><span></span></div>
+    <img class="logo" src="assets/gopala_logo.png" alt="Gopala logo">
+    <h1>Potato Wafer</h1>
+    <div class="tagline">Fresh... Every day!</div>
+  </header>
+
+  <img class="hero-img" src="assets/potato_wafer.jpg" alt="Gopala Potato Wafer pack">
+
+  <div class="content">
+
+    <div class="price-row">
+      <div>
+        <div class="net">Net Content</div>
+        <div class="value">175 g</div>
+      </div>
+      <div style="text-align:right;">
+        <div class="net">M.R.P. (incl. of all taxes)</div>
+        <div class="mrp">₹105.00</div>
+      </div>
+    </div>
+
+    <div class="desc">
+      Thin, golden potato wafers sliced fresh and cooked to a light, even crisp. Finished with a touch of rock salt for a clean, simple taste — no artificial flavours, no shortcuts. Made in small batches so every pack tastes like it just came off the line.
+    </div>
+
+    <div class="fssai-badge">
+      <div class="fssai-logo">FSSAI</div>
+      <div class="fssai-text">
+        <b>Lic. No. 13317010000278</b>
+        This product is manufactured under an FSSAI-licensed facility.
+      </div>
+    </div>
+
+    <div class="accordion open" id="acc-ingredients">
+      <div class="accordion-header" onclick="toggle('acc-ingredients')">
+        Ingredients & Allergens
+        <span class="icon">+</span>
+      </div>
+      <div class="accordion-body">
+        <ul>
+          <li>Potato</li>
+          <li>Refined Groundnut Oil</li>
+          <li>Rock Salt</li>
+        </ul>
+        <span class="allergen-tag">⚠ Contains Groundnut Oil</span>
+        <p style="margin-top:8px;">May not be suitable for individuals with peanut/groundnut allergies. Manufactured in a facility that processes dairy and bakery products.</p>
+      </div>
+    </div>
+
+    <div class="accordion" id="acc-mfg">
+      <div class="accordion-header" onclick="toggle('acc-mfg')">
+        Manufacturing Details
+        <span class="icon">+</span>
+      </div>
+      <div class="accordion-body">
+        <p>
+          <b>Manufactured by:</b><br>
+          Gopala Fresh Produce Pvt. Ltd.<br>
+          B-33, Okhla Industrial Area, Phase-I,<br>
+          New Delhi – 110020, India
+        </p>
+      </div>
+    </div>
+
+    <div class="accordion" id="acc-storage">
+      <div class="accordion-header" onclick="toggle('acc-storage')">
+        Storage & Usage
+        <span class="icon">+</span>
+      </div>
+      <div class="accordion-body">
+        <p>Store in a cool, dry place away from direct sunlight. Reseal or transfer to an airtight container after opening to retain freshness and crispness.</p>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <h3>Need help or have a question?</h3>
+      <a href="tel:8588833123">📞 8588833123</a>
+      <a href="mailto:customercare@gopala.in">✉️ customercare@gopala.in</a>
+      <div class="addr">Gopala Fresh Produce Pvt. Ltd. — B-33, Okhla Industrial Area, Phase-I, New Delhi 110020</div>
+    </div>
+
+  </div>
+
+  <footer>
+    Information on this page is provided in compliance with the FSSAI advisory (File No. SS-M017/1/2023) on QR codes for accessible product information.
+  </footer>
+
+</div>
+
+<script>
+function toggle(id){
+  var el = document.getElementById(id);
+  var body = el.querySelector('.accordion-body');
+  if(el.classList.contains('open')){
+    body.style.maxHeight = null;
+    el.classList.remove('open');
+  } else {
+    el.classList.add('open');
+    body.style.maxHeight = body.scrollHeight + 'px';
+  }
+}
+window.onload = function(){
+  document.querySelectorAll('.accordion.open').forEach(function(el){
+    var body = el.querySelector('.accordion-body');
+    body.style.maxHeight = body.scrollHeight + 'px';
+  });
+};
+</script>
+
+</body>
+</html>
