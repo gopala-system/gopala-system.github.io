@@ -94,7 +94,7 @@
   }
   .price-row{
     display:flex;
-    justify-content:space-between;
+    justify-content:center;
     align-items:center;
     background:var(--card);
     border-radius:14px;
@@ -108,11 +108,13 @@
   .price-row .net{
     font-size:13px;
     color:var(--muted);
+    text-align:center;
   }
-  .price-row .mrp{
+  .price-row .value{
     font-size:20px;
     font-weight:700;
     color:var(--gold-dark);
+    margin-top:2px;
   }
   .desc{
     font-size:15px;
@@ -277,10 +279,6 @@
       <div>
         <div class="net">Net Content</div>
         <div class="value">175 g</div>
-      </div>
-      <div style="text-align:right;">
-        <div class="net">M.R.P. (incl. of all taxes)</div>
-        <div class="mrp">₹105.00</div>
       </div>
     </div>
 
